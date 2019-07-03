@@ -28,3 +28,10 @@ Apply the deployment to the cluster:
 ```sh
 kubectl apply -f deploy.yaml
 ```
+
+## Run the Function
+
+Use storage explorer (or a browser, console, whatever) to add some messages to the queue.  You can watch KEDA spin containers up and down as the load increases and decreases. Dropping all the way to zero once the queue is empty.
+
+```sh
+kubectl get pods -w
