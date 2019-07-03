@@ -10,17 +10,38 @@ To deploy the necessary infrastructure to run this project, ```apply``` the incl
 - An Azure Storage Account and Queue that will trigger the function whenever messages are enqueued
 - An Azure Kubernetes Service instance with KEDA installed
 
-## Deploy the Function
+## Build the Function
+
 
 Build and publish your own docker image to the ACR repo:
+
+```sh
   docker build -t <acr repo url>/keda-func
+  az acr login -n <acr repo name>
   docker push <acr repo url>/keda-func
+```
+
+## Deploy the Function
 
 Update the deploy.yaml to pull the image from the correct repo:
+
 ```yaml
  containers:
       - name: keda-func
         image: <acr repo url>/keda-func
+```
+
+You will also need to add the storage account connection string as a base64 encoded secret:
+
+```yaml
+data:
+  AzureWebJobsStorage: <base64 encoded storage account connection string>
+```
+
+Get the credentials for the AKS instance:
+
+```sh
+az aks get-credentials -g keda-rg -n mykedak8s
 ```
 
 Apply the deployment to the cluster:
@@ -35,3 +56,4 @@ Use storage explorer (or a browser, console, whatever) to add some messages to t
 
 ```sh
 kubectl get pods -w
+```
