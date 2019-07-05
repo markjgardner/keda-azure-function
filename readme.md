@@ -3,11 +3,13 @@
 This repo illustrates how you can use KEDA to deploy your own event triggered Azure Functions to a Kubernetes cluster. This implementation is based on the samples provided [here](https://github.com/kedacore/sample-hello-world-azure-functions) but provides a complete zero-to-running example consumable by any DevOps platform team.
 
 ## Prerequsites
+
 In order to execute this quickstart, you will need:
-  [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local)
-  [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-  [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
-  [terraform](https://www.terraform.io/downloads.html)
+
+  - [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local)
+  - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+  - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+  - [terraform](https://www.terraform.io/downloads.html)
 
 ## Deploy KEDA Infrastructure
 
