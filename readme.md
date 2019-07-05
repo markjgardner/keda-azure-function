@@ -1,6 +1,6 @@
 # DIY FaaS with KEDA and Azure Functions Runtime
 
-This repo illustrates how you can use KEDA to deploy your own event triggered Azure Functions to a Kubernetes cluster. This implementation is based on the samples provided [here](https://github.com/kedacore/sample-hello-world-azure-functions)
+This repo illustrates how you can use KEDA to deploy your own event triggered Azure Functions to a Kubernetes cluster. This implementation is based on the samples provided [here](https://github.com/kedacore/sample-hello-world-azure-functions) but provides a complete zero-to-running example consumable by any DevOps platform team.
 
 ## Deploy KEDA Infrastructure
 
@@ -52,7 +52,7 @@ kubectl apply -f deploy.yaml
 
 ## Run the Function
 
-Use storage explorer (or a browser, console, whatever) to add some messages to the queue.  You can watch KEDA spin containers up and down as the load increases and decreases. Dropping all the way to zero once the queue is empty.
+Use storage explorer (or a browser, console, whatever) to add some messages to the queue.  You can watch KEDA spin containers up and down as the load increases and decreases. Dropping all the way to zero once the queue is empty and the cooldown window (60 seconds) has elapsed.
 
 ```sh
 kubectl get pods -w

@@ -90,7 +90,7 @@ resource "azurerm_storage_account" "storage" {
 }
 
 resource "azurerm_storage_queue" "queue" {
-  name = "keda-queue"
+  name = "items"
   resource_group_name = "${azurerm_resource_group.rg.name}"
   storage_account_name = "${azurerm_storage_account.storage.name}"
 }
@@ -110,4 +110,9 @@ resource "helm_release" "keda_chart" {
   chart = "keda-edge"
   namespace = "keda"
   devel = true
+
+  set {
+    name  = "logLevel"
+    value = "debug"
+  }
 }
